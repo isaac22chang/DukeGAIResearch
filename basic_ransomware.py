@@ -39,23 +39,3 @@ print(f"ChatGPT: {reply}")
 
 
 
-filename = 'g.py'
-
-with open(filename, 'w') as f:
-    f.write(reply)
-
-with open('g.py') as f:
-    first_line = f.readline().strip()
-    print("fL:", first_line)
-
-install_libraries(first_line)
-    
-print("went thru")
-subprocess.run(["python", filename])
-
-try:
-    result = subprocess.run(["python", filename], capture_output=True, text=True, check=True)
-    print("Script output:", result.stdout)
-except subprocess.CalledProcessError as e:
-    print("Error running script:", e)
-    print("Script output (stderr):", e.stderr)
